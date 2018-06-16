@@ -21,28 +21,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
 </head>
 <body>
-
-    @guest
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="container">
-                    <div class="wrapper">
-                        <h1 class="title">Employee Lounge</h1>
-                    </div>
-                </div>
-            </div>
+        @include('includes.navbar')
+        
+        <div class="container-fluid">
+            @yield('content')
         </div>
-    </div>
-    @endguest
-    <main>
-        @yield('content')
-    </main>
-    
-    <script src="{{ asset('js/loginPage.js') }}"></script>
 </body>
 </html>

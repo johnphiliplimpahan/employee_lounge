@@ -12,8 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+// Route::get('/login-','SectionsController@loadLogin')->name('login');
+// Route::get('/register-','SectionsController@loadRegister')->name('register');
 
 Auth::routes();
 
