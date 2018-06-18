@@ -22,3 +22,7 @@ body{
     font-family: Pacifico;
     font-size: 5rem;
 }
+
+.dropdown-toggle::after {
+    display:none !important;
+}

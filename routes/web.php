@@ -15,9 +15,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('/login-','SectionsController@loadLogin')->name('login');
-// Route::get('/register-','SectionsController@loadRegister')->name('register');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/profile','PagesController@profile');
+});
