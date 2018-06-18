@@ -33,11 +33,17 @@
             });
 
             cancelBtn.click(function(){ //Hide card footer when cancel button is clicked
-                
+                form.trigger("reset");
+                let small = form.find("small");
+
                 inputs.each(function(i,v){
                     $(this).attr("disabled",true);
                 });
 
+                small.each(function(){
+                    $(this).remove();
+                });
+                
                 footer.addClass(displayToggle);
 
                 
@@ -45,22 +51,62 @@
 
             saveBtn.click(function(e){
                 e.preventDefault();
-                Data.save(route,form.serialize());
+                let promise = Data.save(route,form);
+                
+                Spinner.start(saveBtn);
+                
+                promise.done(function(response){
+                    if(response === ''){
+                        let el = form.find("small");
+                        $.each(el,function(){
+                            $(this).remove();
+                        });
+
+                        let small = form.find("small");
+
+                        inputs.each(function(i,v){
+                            $(this).attr("disabled",true);
+                        });
+
+                        small.each(function(){
+                            $(this).remove();
+                        });
+
+                        
+                        Spinner.stop(saveBtn);
+                    }else{
+                        $.each(response,function(name,error){
+                            let el = form.find(" input[name='"+name+"'], select[name='"+name+"']");
+                            el.after('<small class="form-control-feedback text-danger">'+error+'</small>');
+                        });
+                        Spinner.stop(saveBtn);
+                    }
+                });
+
             });
         }
     
+    let Spinner = {
+        start : function(button){
+            button.attr("disabled",true);
+            button.append('<i class="fa fa-cog fa-spin ml-2" style="font-size:14px"></i>');
+        },
+        stop : function(button){
+            button.attr("disabled",false);
+            button.find('i').remove();
+        }
+    }
     
     
     let Data = {
-        save : function(route,data){
+        save : function(route,form){
             
-            $.ajax({
+            return $.ajax({
                 url : route,
                 method : "POST",
-                data: data
-            }).done(function(response){
-                console.log(data);
+                data: form.serialize()
             });
+            
         }
     }
 
@@ -120,9 +166,15 @@
 
     }
 
-   PersonalInformation.init();
-   ContactInformation.init();
-   WorkInformation.init();
-   LocationInformation.init();
+    let Page = {
+        load : function(){
+            PersonalInformation.init();
+            ContactInformation.init();
+            WorkInformation.init();
+            LocationInformation.init();
+        }
+    }
+   
+    Page.load();
 
 })(jQuery);

@@ -8,15 +8,15 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <label for="firstname">First Name</label>
-                            <input type="text" class="form-control" name="firstname" value="{{ $personal->firstname }}" required disabled>
+                            <input type="text" class="form-control" name="firstname" value="{{ $personal->firstname }}" autocomplete="off" required disabled>
                         </div>
                         <div class="col-lg-4">
                             <label for="middlename">Middle Name</label>
-                            <input type="text" class="form-control" name="middlename" value="{{ $personal->middlename }}" required disabled>
+                            <input type="text" class="form-control" name="middlename" value="{{ $personal->middlename }}" autocomplete="off" required disabled>
                         </div>
                         <div class="col-lg-4">
                             <label for="lastname">Last Name</label>
-                            <input type="text" class="form-control" name="lastname" value="{{ $personal->lastname }}" required disabled>
+                            <input type="text" class="form-control" name="lastname" value="{{ $personal->lastname }}" autocomplete="off" required disabled>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-lg-6">
                             <label for="dob">Date of Birth</label>
-                            <input type="text" value="{{ isset($personal->dob) ? $personal->dob : '' }}" name="dob" class="form-control" required disabled>
+                            <input type="text" value="{{ isset($personal->dob) ? $personal->dob : '' }}" name="dob" class="form-control" autocomplete="off" required disabled>
                         </div>
                     </div>
                 </form> <!--THE END OF FORM -->

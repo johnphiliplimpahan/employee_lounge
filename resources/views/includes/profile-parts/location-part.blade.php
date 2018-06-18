@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="firstname">Address 1</label>
-                            <input type="text" class="form-control" disabled>
+                            <input type="text" class="form-control" autocomplete="off" disabled>
                         </div>
                     </div>
                 </form>

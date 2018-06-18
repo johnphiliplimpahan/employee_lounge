@@ -17,7 +17,7 @@ class CreatePersonalInformationsTable extends Migration
             $table->increments('personalInfo_id');
             $table->unsignedInteger('user_id');
             $table->string('firstname');
-            $table->string('middlename');
+            $table->string('middlename')->nullable();
             $table->string('lastname');
             $table->string('gender')->nullable();
             $table->string('dob')->nullable();

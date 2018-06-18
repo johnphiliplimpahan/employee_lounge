@@ -12,7 +12,7 @@
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Profile</h5>
+                        <h5 class="card-title text-info font-weight-bold">Profile</h5>
                         <div id="profile-information" class="list-group">
                             <a class="list-group-item list-group-item-action" href="#personal-information">Personal Information</a>
                             <a class="list-group-item list-group-item-action" href="#contact-information">Contact Information</a>
