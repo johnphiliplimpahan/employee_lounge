@@ -45,5 +45,6 @@
     </main>
     
     <script src="{{ asset('js/loginPage.js') }}"></script>
+    <script src="{{ asset('js/profilePage.js') }}"></script>
 </body>
 </html>
