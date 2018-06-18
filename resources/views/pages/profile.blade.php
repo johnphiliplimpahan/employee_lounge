@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-lg-4 mt-3">
-                <div class="card sticky-top">
+            <div class="col-lg-4">
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Profile</h5>
                         <div id="profile-information" class="list-group">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 mt-3">
+            <div class="col-lg-8">
                 <div data-spy="scroll" data-target="#profile-information" data-offset="0" class="scrollspy-example">
                     @include('includes.profile-parts.personal-part')
                     @include('includes.profile-parts.contact-part')
