@@ -1,7 +1,7 @@
 <div class="col-lg-12">
     <div id="personal-information" class="card">
         <div class="card-body">
-            <h4 class="font-weight-bold text-info">Personal Information <a id="pi_editBtn" href="#" class="float-right d-none"><i class="fas fa-edit"></i></a></h4>
+            <h4 class="font-weight-bold text-info mt-5 mb-3">Personal Information <a id="pi_editBtn" href="#" class="float-right d-none"><i class="fas fa-edit"></i></a></h4>
             <div class="container">
                 <form> <!--THE START OF FORM -->
                 <input type="hidden" name="personalInfo_id" value="{{ $personal->personalInfo_id }}">

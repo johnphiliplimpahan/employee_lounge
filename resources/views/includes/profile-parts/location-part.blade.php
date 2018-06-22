@@ -1,7 +1,7 @@
 <div class="col-lg-12 mt-3 mb-3">
     <div id="location-information" class="card">
         <div class="card-body">
-            <h4 class="font-weight-bold text-info">Location <a id="li_editBtn" href="#" class="float-right d-none"><i class="fas fa-edit"></i></a></h4>
+            <h4 class="font-weight-bold text-info mt-5 mb-3">Location <a id="li_editBtn" href="#" class="float-right d-none"><i class="fas fa-edit"></i></a></h4>
             <div class="container">
                 <form>
                     <div class="row">

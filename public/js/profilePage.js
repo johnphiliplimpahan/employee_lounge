@@ -72,8 +72,12 @@
                             $(this).remove();
                         });
 
-                        
+                        inputs.each(function(){
+                            $(this).val($(this).val());
+                        });
+
                         Spinner.stop(saveBtn);
+                        footer.addClass(displayToggle);
                     }else{
                         $.each(response,function(name,error){
                             let el = form.find(" input[name='"+name+"'], select[name='"+name+"']");
