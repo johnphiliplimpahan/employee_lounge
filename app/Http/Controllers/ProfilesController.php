@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\ProfileImage;
 use Validator;
 class ProfilesController extends Controller
 {
@@ -70,6 +71,36 @@ class ProfilesController extends Controller
             $user = User::find(auth()->user()->id);
             $user->location_information()->update($request->all());
         }
+    }
+
+    public function profile_image_store(Request $request){
+
+        $current_image = ProfileImage::where('user_id',auth()->user()->id)->first();
+        $user = User::find(auth()->user()->id);
+
+        Validator::make($request->all(),[
+            'profile_image' => 'image|max:1999'
+        ]);
+        
+        if($request->hasFile('profile_image')){
+            $namewithext = $request->file('profile_image')->getClientOriginalName();
+            $name = pathinfo($namewithext, PATHINFO_FILENAME);
+            $ext = $request->file('profile_image')->getClientOriginalExtension();
+            $nametostore = $name.'_'.time().'_'.$ext;
+
+            if(isset($current_image->profile_image) || $current_image->profile_image === 'placeholder_image.png'){
+                $user->profile_image()->update(['profile_image' => $nametostore]);
+                $path = $request->file('profile_image')->storeAs('public/profile-images',$nametostore);
+                return redirect('profile');
+            }else{
+                Storage::delete(['public/profile-images/'.$current_image->profile_image]);
+                $user->profile_image()->update(['profile_image' => $nametostore]);
+                $path = $request->file('profile_image')->storeAs('public/profile-images',$nametostore);
+                return redirect('profile');
+            }
+        }
+
+        
         
     }
 }

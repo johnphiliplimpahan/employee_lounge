@@ -26,7 +26,6 @@
 </head>
 <body class="position-relative">
 
-    @guest
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -38,9 +37,7 @@
             </div>
         </div>
     </div>
-    @endguest
     <main>
-        @include('includes.navbar')
         @yield('content')
     </main>
     

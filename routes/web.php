@@ -25,4 +25,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/contact-information','ProfilesController@contact_information_store');
     Route::post('/work-information','ProfilesController@work_information_store');
     Route::post('/location-information','ProfilesController@location_information_store');
+    Route::post('/profile-image','ProfilesController@profile_image_store');
 });

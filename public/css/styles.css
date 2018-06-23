@@ -30,6 +30,17 @@ body{
     position: fixed;
     width: 25%;
 }
+
+#profile_overlay {
+    opacity: 0;
+    background-color: rgba(33, 33, 33, .4);
+    transition: opacity .2s ease-in-out;
+}
+
+#profile_overlay:hover{
+    opacity: 1;
+}
+
 .scrollit {
     float: left;
     width: 71%

@@ -43,4 +43,8 @@ class User extends Authenticatable
         return $this->hasOne('App\LocationInformation');
     }
 
+    public function profile_image(){
+        return $this->hasOne('App\ProfileImage');
+    }
+
 }

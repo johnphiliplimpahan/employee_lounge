@@ -1,16 +1,27 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 
 @section('content')
     <div class="container">
         <div class="col-lg-12" align="center">
             <div class="container-fluid mt-5">
-                <div  id="profile_pic" class="card bg-dark text-white col-xs-2 col-sm-6 col-lg-3 p-0">
-                    <img class="card-img" src="{{ asset('img/icons/sample.jpg') }}" alt="Card image">
-                    <div id="profile_overlay" class="card-img-overlay pt-5 d-none">
-                        <form>
-                            <h5 class="mt-5">Change Profile Picture</h5>
-                            <input type="file" accept=".png,.jpg" class="btn btn-secondary btn-sm btn-block mt-3" name="" id="">
+                <div id="profile_pic" class="card bg-dark text-white col-lg-3 p-0">
+                    <img width="250" height="250" class="card-img" src="/storage/profile-images/{{ isset($profile->profile_image) ? $profile->profile_image : 'placeholder_image.png' }}" alt="Card image">
+                    <div id="profile_overlay" class="card-img-overlay">
+                        <form method="POST" action="/profile-image" enctype="multipart/form-data">
+                            @csrf
+                            <div class="col-lg-12">
+                                <h5 class="mt-5">Update Profile Picture</h5>
+                                <input type="file" accept=".png,.jpg" class="btn btn-secondary btn-sm btn-block" name="profile_image" id="">
+                            </div>
+                            <div id="profile_image_actions" class="row mt-5 d-none">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-success btn-sm btn-block">Save</button>
+                                </div>
+                                <div class="col">
+                                    <button type="reset" class="btn btn-danger btn-sm btn-block">Cancel</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -1,5 +1,4 @@
 
-@if(Auth::check())
 <nav id="el-navbar" class="navbar navbar-expand-lg navbar-light bg-info sticky-top">
   <a class="navbar-brand text-white" href="/home">Employee Lounge</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +10,7 @@
     <li class="nav-item dropdown">
     
         <a class="nav-link dropdown-toggle  text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span><img class="rounded" src="{{ asset('img/icons/sample.jpg') }}" width="30" height="30" alt=""></span> {{ auth()->user()->firstname }}
+        <span><img class="rounded" src="/storage/profile-images/{{ isset($profile->profile_image) ? $profile->profile_image : 'placeholder_image.png' }}" width="30" height="30" alt=""></span> {{ auth()->user()->firstname }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/profile">Profile</a>
@@ -59,4 +58,3 @@
     </ul>
   </div>
 </nav>
-@endif

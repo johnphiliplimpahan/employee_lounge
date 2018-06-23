@@ -177,33 +177,29 @@
             WorkInformation.init();
             LocationInformation.init();
         },
-        profileImage : function(){
-            let pic = $("#profile_pic");
-            let overlay = $("#profile_overlay");
-            pic.mouseenter(function(){
-                    if(overlay.hasClass('d-none')){
-                        overlay.removeClass('animated fadeIn');
-                        overlay.removeClass('animated fadeOut');
-                        overlay.removeClass('d-none');
-                        overlay.css('background-color','rgba(33,33,33,0.5)');
-                        overlay.addClass('animated fadeIn');
-                    }
-                });
-            pic.mouseleave(function(){
-                if(!overlay.hasClass('d-none')){
-                    overlay.removeClass('animated fadeIn');
-                    overlay.removeClass('animated fadeOut');
-                    overlay.addClass('animated fadeOut');
-                    setTimeout(function(){
-                        overlay.addClass('d-none');
-                    },700);
+        profileChanger : function(){
+            let actions = $("#profile_image_actions");
+
+            $("#profile_overlay form input[type='file']").change(function(){
+                
+                if(actions.hasClass('d-none')){
+                    actions.removeClass('d-none');
+                }else{
+                    actions.addClass('d-none');
                 }
                 
             });
+
+            $("#profile_overlay form button[type='reset']").click(function(){
+                if(!actions.hasClass('d-none')){
+                    actions.addClass('d-none');
+                }
+            });
+
         }
     }
    
     Page.load();
-    Page.profileImage();
+    Page.profileChanger();
 
 })(jQuery);
