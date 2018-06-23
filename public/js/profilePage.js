@@ -11,7 +11,7 @@
             let cancelBtn = footer.find('button[type="button"]');
             let saveBtn = footer.find('button[type="submit"]');
             let form = container.find('form');
-            let inputs = form.find('input , select');
+            let inputs = form.find('input , select, textarea');
 
             container.hover( //Toggles the display of edit button when hovered
                 function(){
@@ -80,7 +80,7 @@
                         footer.addClass(displayToggle);
                     }else{
                         $.each(response,function(name,error){
-                            let el = form.find(" input[name='"+name+"'], select[name='"+name+"']");
+                            let el = form.find(" input[name='"+name+"'], select[name='"+name+"'], textarea[name='"+name+"']");
                             el.after('<small class="form-control-feedback text-danger">'+error+'</small>');
                         });
                         Spinner.stop(saveBtn);
@@ -176,9 +176,34 @@
             ContactInformation.init();
             WorkInformation.init();
             LocationInformation.init();
+        },
+        profileImage : function(){
+            let pic = $("#profile_pic");
+            let overlay = $("#profile_overlay");
+            pic.mouseenter(function(){
+                    if(overlay.hasClass('d-none')){
+                        overlay.removeClass('animated fadeIn');
+                        overlay.removeClass('animated fadeOut');
+                        overlay.removeClass('d-none');
+                        overlay.css('background-color','rgba(33,33,33,0.5)');
+                        overlay.addClass('animated fadeIn');
+                    }
+                });
+            pic.mouseleave(function(){
+                if(!overlay.hasClass('d-none')){
+                    overlay.removeClass('animated fadeIn');
+                    overlay.removeClass('animated fadeOut');
+                    overlay.addClass('animated fadeOut');
+                    setTimeout(function(){
+                        overlay.addClass('d-none');
+                    },700);
+                }
+                
+            });
         }
     }
    
     Page.load();
+    Page.profileImage();
 
 })(jQuery);

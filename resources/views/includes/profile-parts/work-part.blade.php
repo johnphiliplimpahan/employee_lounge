@@ -7,21 +7,21 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <label for="company">Company</label>
-                                <input type="text" value="{{ $work->company }}" class="form-control" autocomplete="off" disabled>
+                                <input type="text" value="{{ $work->company }}" name="company" class="form-control" autocomplete="off" disabled>
                             </div>
                             <div class="col-lg-4">
                                 <label for="department">Department</label>
-                                <input type="text" value="{{ $work->department }}" class="form-control" autocomplete="off" disabled>
+                                <input type="text" value="{{ $work->department }}" name="department" class="form-control" autocomplete="off" disabled>
                             </div>
                             <div class="col-lg-4">
                                 <label for="occupation">Occupation</label>
-                                <input type="text" value="{{ $work->occupation }}" class="form-control" autocomplete="off" disabled>
+                                <input type="text" value="{{ $work->occupation }}" name="occupation" class="form-control" autocomplete="off" disabled>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-lg-6">
                                 <label for="hire_date">Hire Date</label>
-                                <input type="text" value="{{ $work->hireDate }}" class="form-control" autocomplete="off" disabled>
+                                <input type="text" value="{{ $work->hireDate }}" name="hireDate" class="form-control" autocomplete="off" disabled>
                             </div>
                         </div>
                     </form>

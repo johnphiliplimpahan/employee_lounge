@@ -5,9 +5,9 @@
             <div class="container">
                 <form>
                     <div class="row">
-                        <div class="col-lg-6">
-                            <label for="firstname">Address 1</label>
-                            <input type="text" class="form-control" autocomplete="off" disabled>
+                        <div class="col-lg-12">
+                            <label for="address">Current Address</label>
+                            <textarea class="form-control" name="address" rows="3" autocomplete="off" disabled>{{ $location->address }}</textarea>
                         </div>
                     </div>
                 </form>

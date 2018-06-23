@@ -26,8 +26,11 @@ body{
     display:none !important;
 }
 
-.sticky {
+.fixed {
     position: fixed;
-    top: 0;
-    width: 100%;
+    width: 25%;
+}
+.scrollit {
+    float: left;
+    width: 71%
 }

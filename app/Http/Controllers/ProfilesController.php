@@ -44,10 +44,10 @@ class ProfilesController extends Controller
 
     public function work_information_store(Request $request){
         $validation = Validator::make($request->all(),[
-            'company' => 'nullable|max:50',
-            'department' => 'nullable',
-            'occupation' => 'nullable',
-            'hireDate' => 'nullable'
+            'company' => 'required|max:50',
+            'department' => 'required',
+            'occupation' => 'required',
+            'hireDate' => 'required'
         ]);
 
         if($validation->fails()){
@@ -55,6 +55,20 @@ class ProfilesController extends Controller
         }else{
             $user = User::find(auth()->user()->id);
             $user->work_information()->update($request->all());
+        }
+        
+    }
+
+    public function location_information_store(Request $request){
+        $validation = Validator::make($request->all(),[
+            'address' => 'required'
+        ]);
+
+        if($validation->fails()){
+            return response()->json($validation->messages());
+        }else{
+            $user = User::find(auth()->user()->id);
+            $user->location_information()->update($request->all());
         }
         
     }

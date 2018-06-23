@@ -40,7 +40,7 @@ class User extends Authenticatable
     }
 
     public function location_information(){
-        return $this->hasMany('App\LocationInformation');
+        return $this->hasOne('App\LocationInformation');
     }
 
 }
