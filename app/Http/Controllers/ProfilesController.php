@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\ProfileImage;
 use Validator;
+use Storage;
 class ProfilesController extends Controller
 {
 
@@ -86,18 +87,18 @@ class ProfilesController extends Controller
             $namewithext = $request->file('profile_image')->getClientOriginalName();
             $name = pathinfo($namewithext, PATHINFO_FILENAME);
             $ext = $request->file('profile_image')->getClientOriginalExtension();
-            $nametostore = $name.'_'.time().'_'.$ext;
+            $nametostore = $name.'_'.time().'.'.$ext;
 
-            if(isset($current_image->profile_image) || $current_image->profile_image === 'placeholder_image.png'){
-                $user->profile_image()->update(['profile_image' => $nametostore]);
-                $path = $request->file('profile_image')->storeAs('public/profile-images',$nametostore);
-                return redirect('profile');
-            }else{
-                Storage::delete(['public/profile-images/'.$current_image->profile_image]);
+            if($current_image->profile_image === 'placeholder_image.png'){
                 $user->profile_image()->update(['profile_image' => $nametostore]);
                 $path = $request->file('profile_image')->storeAs('public/profile-images',$nametostore);
                 return redirect('profile');
             }
+
+            Storage::delete(['public/profile-images/'.$current_image->profile_image]);
+            $user->profile_image()->update(['profile_image' => $nametostore]);
+            $path = $request->file('profile_image')->storeAs('public/profile-images',$nametostore);
+            return redirect('profile');
         }
 
         
